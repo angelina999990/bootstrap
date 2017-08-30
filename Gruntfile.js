@@ -140,7 +140,7 @@ module.exports = function(grunt) {
         singleRun: true,
         autoWatch: false,
         reporters: ['dots'],
-        browsers: ['Firefox']
+        browsers: ['Chrome']
       },
       coverage: {
         preprocessors: {

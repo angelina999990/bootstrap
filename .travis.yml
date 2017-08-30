@@ -9,8 +9,7 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - g++-4.8
-    firefox:
-      - "latest"
+    firefox: "50.0.2"
 
 before_install:
   - export DISPLAY=:99.0

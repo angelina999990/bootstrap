@@ -4,12 +4,12 @@ node_js:
 env:
   - CXX=g++-4.8
 addons:
+  firefox: latest
   apt:
     sources:
       - ubuntu-toolchain-r-test
     packages:
       - g++-4.8
-    firefox: "50.0.2"
 
 before_install:
   - export DISPLAY=:99.0

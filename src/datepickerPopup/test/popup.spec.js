@@ -1514,7 +1514,8 @@ describe('datepicker popup', function() {
     describe('attribute `alt-input-formats`', function() {
       beforeEach(function() {
         $rootScope.date = new Date('November 9, 1980');
-        var wrapElement = $compile('<div><input ng-model="date" uib-datepicker-popup="MMMM d yyyy" alt-input-formats="[\'M!/d!/yyyy\']" is-open="true"></div>')($rootScope);
+        $rootScope.altInputFormats = ['M!/d!/yyyy'];
+        var wrapElement = $compile('<div><input ng-model="date" uib-datepicker-popup="MMMM d yyyy" alt-input-formats="altInputFormats" is-open="true"></div>')($rootScope);
         $rootScope.$digest();
         assignElements(wrapElement);
       });
@@ -1531,6 +1532,17 @@ describe('datepicker popup', function() {
         expect(selectedElementIndex()).toEqual(14);
         changeInputValueTo(inputEl, '11/8/1980');
         expect(selectedElementIndex()).toEqual(13);
+      });
+
+      it('changes alternate input formats', function() {
+        $rootScope.altInputFormats = ['yyyy-M!-d!'];
+        $timeout(function() {
+          changeInputValueTo(inputEl, '2017-08-30');
+
+          expect($rootScope.date.getFullYear()).toEqual(2017);
+          expect($rootScope.date.getMonth()).toEqual(7);
+          expect($rootScope.date.getDate()).toEqual(30);
+        }, 0);
       });
     });
   });

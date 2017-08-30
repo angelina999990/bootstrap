@@ -72,6 +72,13 @@ function($scope, $element, $attrs, $compile, $log, $parse, $window, $document, $
           }
         }
       });
+      $attrs.$observe('altInputFormats', function(value, oldValue) {
+        var newAltInputFormats = angular.isDefined(value) ? $scope.$parent.$eval(value) : altInputFormats;
+
+        if (newAltInputFormats !== altInputFormats) {
+          altInputFormats = newAltInputFormats;
+        }
+      });
     }
 
     if (!dateFormat) {

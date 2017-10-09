@@ -17,5 +17,5 @@ before_install:
   - npm install --quiet -g karma
 
 script: grunt
-sudo: false
+sudo: required
 dist: precise
